@@ -10,6 +10,7 @@ namespace Xunit.Sdk
         public XunitWorkerThread(Action threadProc)
         {
             thread = new Thread(s => ((Action)s)()) { IsBackground = true };
+            thread.SetApartmentState(ApartmentState.STA);
             thread.Start(threadProc);
         }
 
